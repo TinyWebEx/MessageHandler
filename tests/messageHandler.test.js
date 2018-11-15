@@ -2,9 +2,9 @@ import "https://unpkg.com/mocha@5.2.0/mocha.js"; /* globals mocha */
 import "https://unpkg.com/chai@4.1.2/chai.js"; /* globals chai */
 import "https://unpkg.com/sinon@6.1.5/pkg/sinon.js"; /* globals sinon */
 
-import {MESSAGE_LEVEL} from "/common/modules/data/MessageLevel.js";
-import * as CommonMessages from "/common/modules/MessageHandler/CommonMessages.js";
-import * as CustomMessages from "/common/modules/MessageHandler/CustomMessages.js";
+import { MESSAGE_LEVEL } from "../../data/MessageLevel.js";
+import * as CommonMessages from "../CommonMessages.js";
+import * as CustomMessages from "../CustomMessages.js";
 
 import * as AddonSettingsStub from "./helper/AddonSettingsStub.js";
 import * as HtmlMock from "./helper/HtmlMock.js";

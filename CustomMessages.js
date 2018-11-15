@@ -1,16 +1,13 @@
 /**
  * Shows and hides messages to the user.
  *
- * @module /common/modules/MessageHandler
- * @requires /common/modules/lib/lodash/isFunction
- * @requires /common/modules/data/MessageLevel
- * @requires /common/modules/Logger
+ * @module MessageHandler
  */
 
 // lodash
-import isFunction from "/common/modules/lib/lodash/isFunction.js";
+import isFunction from "../lodash/isFunction.js";
 
-import * as Logger from "/common/modules/Logger/Logger.js";
+import * as Logger from "../Logger/Logger.js";
 
 const HOOK_TEMPLATE = {
     show: null,

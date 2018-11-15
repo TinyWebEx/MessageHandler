@@ -1,14 +1,12 @@
 /**
  * Provides access to the most common message types.
  *
- * @module /common/modules/MessageHandler/MessageHandler
- * @requires /common/modules/lib/lodash/isFunction
- * @requires /common/modules/data/MessageLevel
+ * @module MessageHandler
  */
 
-import {MESSAGE_LEVEL} from "/common/modules/data/MessageLevel.js";
+import { MESSAGE_LEVEL } from "../data/MessageLevel.js";
 
-import * as Logger from "/common/modules/Logger/Logger.js";
+import * as Logger from "../Logger/Logger.js";
 
 import * as CustomMessages from "./CustomMessages.js";
 
