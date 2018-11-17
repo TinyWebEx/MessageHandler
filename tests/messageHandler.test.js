@@ -6,9 +6,9 @@ import { MESSAGE_LEVEL } from "../../data/MessageLevel.js";
 import * as CommonMessages from "../CommonMessages.js";
 import * as CustomMessages from "../CustomMessages.js";
 
-import * as AddonSettingsStub from "./helper/AddonSettingsStub.js";
-import * as HtmlMock from "./helper/HtmlMock.js";
-import {wait} from "./helper/PromiseHelper.js";
+import * as AddonSettingsStub from "../../TestHelper/AddonSettingsStub.js";
+import * as HtmlMock from "../../TestHelper/HtmlMock.js";
+import {wait} from "../../TestHelper/PromiseHelper.js";
 
 const HTML_BASE_FILE = "./messageHandler/baseCode.html";
 
