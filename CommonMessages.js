@@ -163,15 +163,105 @@ export function showSuccess(...args) {
  * The errorShown function gets one parameter: The arguments passed to the
  * function, as an array.
  *
- * @function
- * @param  {MESSAGE_LEVEL|HtmlElement} messageType use string "global" for a global hook
+ * @private
+ * @param {MESSAGE_LEVEL|HtmlElement} messageType use string "global" for a global hook
  * @param {function|null} [hookShown]
  * @param {function|null} [hookHidden]
  * @returns {void}
  */
-export function setHook(messageType, hookShown = null, hookHidden = null) {
+function setHook(messageType, hookShown = null, hookHidden = null) {
     CustomMessages.setHook(messageType, "show", hookShown);
     CustomMessages.setHook(messageType, "hide", hookHidden);
+}
+
+/**
+ * Let's other functions set a hook to be called when a error message is
+ * shown or hidden.
+ *
+ * Set parameters to null or undefined (i.e. do not set) in order to disable
+ * the hook.
+ * The errorShown function gets one parameter: The arguments passed to the
+ * function, as an array.
+ *
+ * @public
+ * @param {function|null} [hookShown]
+ * @param {function|null} [hookHidden]
+ * @returns {void}
+ */
+export function setErrorHook(hookShown = null, hookHidden = null) {
+    return setHook(MESSAGE_LEVEL.ERROR, hookShown, hookHidden);
+}
+
+/**
+ * Let's other functions set a hook to be called when a warning message is
+ * shown or hidden.
+ *
+ * Set parameters to null or undefined (i.e. do not set) in order to disable
+ * the hook.
+ * The errorShown function gets one parameter: The arguments passed to the
+ * function, as an array.
+ *
+ * @public
+ * @param {function|null} [hookShown]
+ * @param {function|null} [hookHidden]
+ * @returns {void}
+ */
+export function setWarningHook(hookShown = null, hookHidden = null) {
+    return setHook(MESSAGE_LEVEL.WARN, hookShown, hookHidden);
+}
+
+/**
+ * Let's other functions set a hook to be called when a info message is shown
+ * or hidden.
+ *
+ * Set parameters to null or undefined (i.e. do not set) in order to disable
+ * the hook.
+ * The errorShown function gets one parameter: The arguments passed to the
+ * function, as an array.
+ *
+ * @public
+ * @param {function|null} [hookShown]
+ * @param {function|null} [hookHidden]
+ * @returns {void}
+ */
+export function setInfoHook(hookShown = null, hookHidden = null) {
+    return setHook(MESSAGE_LEVEL.INFO, hookShown, hookHidden);
+}
+
+/**
+ * Let's other functions set a hook to be called when a loading message is
+ * shown or hidden.
+ *
+ * Set parameters to null or undefined (i.e. do not set) in order to disable
+ * the hook.
+ * The errorShown function gets one parameter: The arguments passed to the
+ * function, as an array.
+ *
+ * @public
+ * @param {function|null} [hookShown]
+ * @param {function|null} [hookHidden]
+ * @returns {void}
+ */
+export function setLoadingHook(hookShown = null, hookHidden = null) {
+    return setHook(MESSAGE_LEVEL.LOADING, hookShown, hookHidden);
+}
+
+/**
+ * Let's other functions set a hook to be called when an success message is
+ * shown or hidden.
+ *
+ * Set parameters to null or undefined (i.e. do not set) in order to disable
+ * the hook.
+ * The errorShown function gets one parameter: The arguments passed to the
+ * function, as an array.
+ *
+ * @public
+ * @param {function|null} [hookShown]
+ * @param {function|null} [hookHidden]
+ * @returns {void}
+ */
+export function setSuccessHook(hookShown = null, hookHidden = null) {
+    return setHook(MESSAGE_LEVEL.SUCCESS, hookShown, hookHidden);
 }
 
 /**
