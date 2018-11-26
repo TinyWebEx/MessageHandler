@@ -6,7 +6,7 @@ import { MESSAGE_LEVEL } from "../../data/MessageLevel.js";
 import * as CommonMessages from "../CommonMessages.js";
 import * as CustomMessages from "../CustomMessages.js";
 
-import * as AddonSettingsStub from "../../TestHelper/AddonSettingsStub.js";
+import * as AddonSettingsStub from "../../AddonSettings/tests/helper/AddonSettingsStub.js";
 import * as HtmlMock from "../../TestHelper/HtmlMock.js";
 import {wait} from "../../TestHelper/PromiseHelper.js";
 
