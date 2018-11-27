@@ -354,6 +354,12 @@ export function hideMessage(messageType = null) {
     }
 
     const elMessage = getHtmlElement(messageType);
+    // do not re-show if already shown
+    if (elDismissIcon.classList.contains("invisible")) {
+        Logger.logInfo("message is already hidden, skip hiding again", elMessage);
+        return elMessage; // silently
+    }
+
     // hide single message
     const elDismissIcon = elMessage.getElementsByClassName("icon-dismiss")[0];
 
