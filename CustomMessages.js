@@ -265,8 +265,7 @@ export function showMessage(...args) {
     }
 
     if (!elMessage) {
-        Logger.logError("The message could not be shown, because the DOM element is missing.", messageType, args);
-        return;
+        throw new Error("The message could not be shown, because the DOM element is missing.", messageType, args);
     }
 
     /* check value type/usage of first argument */
@@ -459,7 +458,7 @@ export function registerMessageType(messageType, elMessage, designClass, ariaLab
     htmlElements[messageType] = elMessage;
 
     // set empty hook
-    const newHook = HOOK_TEMPLATE;
+    const newHook = Object.assign({}, HOOK_TEMPLATE);
 
     // optionally set design type
     if (designClass) {
