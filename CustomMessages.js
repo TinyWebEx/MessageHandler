@@ -9,17 +9,17 @@ import isFunction from "../lodash/isFunction.js";
 
 import * as Logger from "../Logger/Logger.js";
 
-const HOOK_TEMPLATE = {
+const HOOK_TEMPLATE = Object.freeze({
     show: null,
     hide: null,
-};
-const HOOK_TEMPLATE_DISMISS = {
+});
+const HOOK_TEMPLATE_DISMISS = Object.freeze({
     dismissStart: null,
     dismissEnd: null,
-};
-const HOOK_TEMPLATE_ACTION_BUTTON = {
+});
+const HOOK_TEMPLATE_ACTION_BUTTON = Object.freeze({
     actionButton: null
-};
+});
 
 let globalHooks = Object.assign({}, HOOK_TEMPLATE, HOOK_TEMPLATE_DISMISS, HOOK_TEMPLATE_ACTION_BUTTON);  /* eslint-disable-line */
 let hooks = {};
@@ -544,7 +544,9 @@ export function getHtmlElement(messageType) {
  * @throws {TypeError|Error} if invalid hook type is used
  */
 function verifyHook(hookType, hookFunction) {
-    if (!(hookType in HOOK_TEMPLATE)) {
+    if (!(hookType in HOOK_TEMPLATE) &&
+        !(hookType in HOOK_TEMPLATE_DISMISS) &&
+        !(hookType in HOOK_TEMPLATE_ACTION_BUTTON)) {
         throw new TypeError(`Hook type "${hookType}" is not unknown.`);
     }
 
