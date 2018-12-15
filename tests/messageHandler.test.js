@@ -117,7 +117,7 @@ describe("common module: MessageHandler", function () {
             const mockConsole = sinon.mock(console);
 
             mockConsole.expects("error")
-                .once().withExactArgs(sinon.match.string, "showMessage has been called without parameters");
+                .once().withExactArgs("showMessage has been called without parameters");
 
             // test function
             CommonMessages.showMessage();
