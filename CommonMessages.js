@@ -6,8 +6,6 @@
 
 import { MESSAGE_LEVEL } from "../data/MessageLevel.js";
 
-import * as Logger from "../Logger/Logger.js";
-
 import * as CustomMessages from "./CustomMessages.js";
 
 // simply forward custom message types
@@ -295,7 +293,7 @@ export function setDismissHooks(startHook = null, endHook = null) {
  */
 function registerMessageTypeIfExists(messageType, elMessage, designClass, ariaLabelType) {
     if (!elMessage) {
-        Logger.logWarning(elMessage, "does not exist. Skip registering message type.");
+        console.warn(elMessage, "does not exist. Skip registering message type.");
         return;
     }
 

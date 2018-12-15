@@ -7,8 +7,6 @@
 // lodash
 import isFunction from "../lodash/isFunction.js";
 
-import * as Logger from "../Logger/Logger.js";
-
 const HOOK_TEMPLATE = Object.freeze({
     show: null,
     hide: null,
@@ -108,7 +106,7 @@ function dismissMessage(event) {
             event
         });
 
-        Logger.logInfo("message is dismissed", event);
+        console.info("message is dismissed", event);
     } else if (event.type === "transitionend") {
         const elMessage = event.target;
         const messageType = getMessageTypeFromElement(elMessage);
@@ -172,7 +170,7 @@ function actionButtonClicked(event) {
 
     const messageType = getMessageTypeFromElement(elMessage);
 
-    Logger.logInfo("action button clicked for ", messageType, event);
+    console.info("action button clicked for ", messageType, event);
 
     runHook(messageType, "actionButton", {
         elMessage,
@@ -241,16 +239,12 @@ export function setMessageDesign(messageBoxOrType, newDesignType) {
  */
 export function showMessage(...args) {
     if (args.length === 0) {
-        Logger.logError("showMessage has been called without parameters");
+        console.error("showMessage has been called without parameters");
         return;
     }
 
     // also log message to console
-    if (args[0] instanceof HTMLElement) {
-        Logger.logInfo(...args);
-    } else {
-        Logger.log(...args);
-    }
+    console.log(...args);
 
     // get first element
     const messageType = args.shift();
@@ -355,7 +349,7 @@ export function hideMessage(messageType = null) {
     const elMessage = getHtmlElement(messageType);
     // do not re-show if already shown
     if (elMessage.classList.contains("invisible")) {
-        Logger.logInfo("message is already hidden, skip hiding again", elMessage);
+        console.info("message is already hidden, skip hiding again", elMessage);
         return elMessage; // silently
     }
 
@@ -367,7 +361,7 @@ export function hideMessage(messageType = null) {
         elDismissIcon.classList.add("invisible");
     }
 
-    Logger.logInfo("message is hidden", elMessage);
+    console.info("message is hidden", elMessage);
 
     // run hook
     runHook(messageType, "hide");
