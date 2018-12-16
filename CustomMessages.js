@@ -71,6 +71,71 @@ function runHook(messageType, hooktype, param) {
 }
 
 /**
+ * Hides a message.
+ *
+ * The following commands are implemented:
+ * "hide"       – hides the message with animation and resolves has been hidden
+ *              successfully
+ * "hideStart"  – hides the message with animation and resolves if the hiding
+ *              process started
+ * "hideEnd"    – finishes hiding (after the animation, i.e. just makes the
+ *              message invisible) and resolves, if this is done.
+ *
+ * The Promises resolve with elMessage and (optionally, in "hideEnd") the
+ * messageType.
+ *
+ * @private
+ * @param  {HTMLElement} elMessage
+ * @param  {string} [action="hide"] the action to do
+ * @returns {Promise}
+ */
+function hideMessageAnimate(elMessage, action = "hide") {
+    return new Promise((resolve) => {
+        // ignore invalid message boxes as events are often passed in here and
+        // it may not the correct one from the message box
+        verifyIsValidMessageHtml(elMessage);
+
+        // if button is just clicked trigger hiding
+        switch (action) {
+        case "hide":
+        case "hideStart": {
+            // trigger hiding
+            elMessage.classList.add("fade-hide");
+
+            // add handler to hide message completly after transition
+            const callback = async () => {
+                await hideMessageAnimate(elMessage, "hideEnd");
+
+                // remove set handler
+                elMessage.removeEventListener("transitionend", callback);
+
+                if (action === "hide") {
+                    resolve();
+                }
+            };
+            elMessage.addEventListener("transitionend", callback);
+
+            if (action === "hideStart") {
+                resolve(elMessage);
+            }
+            break;
+        }
+        case "hideEnd": {
+            const messageType = getMessageTypeFromElement(elMessage);
+
+            // hide message (and icon)
+            hideMessage(messageType);
+
+            resolve(elMessage, messageType);
+            break;
+        }
+        default:
+            throw new TypeError(`invalid action command: "${action}"`);
+        }
+    });
+}
+
+/**
  * Dismisses (i.e. hides with animation) a message when the dismiss button is clicked.
  *
  * It automatically detects whether it is run as a trigger (click event) or
@@ -80,54 +145,28 @@ function runHook(messageType, hooktype, param) {
  * @function
  * @private
  * @param  {Object} event
- * @returns {void}
+ * @returns {Promise}
  */
 function dismissMessage(event) {
-    // if button is just clicked triggere hiding
-    if (event.type === "click") {
-        const elDismissIcon = event.target;
-        const elMessage = elDismissIcon.parentElement;
-        const messageType = getMessageTypeFromElement(elMessage);
+    const elDismissIcon = event.target;
+    const elMessage = elDismissIcon.parentElement;
+    const messageType = getMessageTypeFromElement(elMessage);
 
-        // ignore event, if it is not the correct one from the message box
-        if (!elMessage.classList.contains("message-box")) {
-            return;
-        }
-
-        // trigger hiding
-        elMessage.classList.add("fade-hide");
-
-        // add handler to hide message completly after transition
-        elMessage.addEventListener("transitionend", dismissMessage);
-
-        runHook(messageType, "dismissStart", {
+    const fullyDismissed = hideMessageAnimate(elMessage, "hide").then(() => {
+        return runHook(messageType, "dismissEnd", {
             elMessage,
             messageType,
             event
         });
+    });
 
-        console.info("message is dismissed", event);
-    } else if (event.type === "transitionend") {
-        const elMessage = event.target;
-        const messageType = getMessageTypeFromElement(elMessage);
+    runHook(messageType, "dismissStart", {
+        elMessage,
+        messageType,
+        event
+    });
 
-        // ignore event, if it is not the correct one from the message box
-        if (!elMessage.classList.contains("message-box")) {
-            return;
-        }
-
-        // hide message (and icon)
-        hideMessage(messageType);
-
-        runHook(messageType, "dismissEnd", {
-            elMessage,
-            messageType,
-            event
-        });
-
-        // remove set handler
-        elMessage.removeEventListener("transitionend", dismissMessage);
-    }
+    return fullyDismissed;
 }
 
 /**
@@ -332,9 +371,11 @@ export function showMessage(...args) {
  *
  * @function
  * @param  {string|int} messageType
+ * @param  {Object} [options]
+ * @param  {boolean} [options.animate=false] set to true to animate the hiding
  * @returns {HTMLElement|HTMLElement[]} the element(s) hidden
  */
-export function hideMessage(messageType = null) {
+export function hideMessage(messageType = null, options = {}) {
     // hide all messages if type is not specified
     if (messageType === null) {
         // hide all of them
@@ -347,10 +388,19 @@ export function hideMessage(messageType = null) {
     }
 
     const elMessage = getHtmlElement(messageType);
-    // do not re-show if already shown
+    // do not re-hide if already hidden
     if (elMessage.classList.contains("invisible")) {
         console.info("message is already hidden, skip hiding again", elMessage);
         return elMessage; // silently
+    }
+
+    // fade, if specified
+    if (options.animate === true) {
+        // trigger hiding
+        hideMessageAnimate(elMessage);
+        // Note this will automatically come back here (to hideMessage()), so
+        // that the hook is called in any case
+        return elMessage;
     }
 
     // hide single message
