@@ -112,7 +112,7 @@ CommonMessages.showSuccess("resettingOptionsWorked", true, {
 })
 ```
 
-(This is actually [in TinyWebEx AutomaticSettings](https://github.com/TinyWebEx/AutomaticSettings).)
+(This is actually [used in TinyWebEx AutomaticSettings](https://github.com/TinyWebEx/AutomaticSettings).)
 
 ### Hooks
 
