@@ -1,33 +1,33 @@
 {
   // errors or other messages (mostly for settings)
   "errorShowingMessage": {
-    "message": "Konnte Nachricht nicht anzeigen.",
+    "message": "Could not show this message.",
     "description": "When there is an error when showing the error/info/…."
   },
 
   // ARIA labels/descriptions for messages
   "dismissIconDescription": {
-    "message": "Diese Nachricht schließen",
+    "message": "Close this message",
     "description": "the aria label for the close button of the message box"
   },
   "ariaMessageLoading": {
-    "message": "Ladenachricht",
+    "message": "loading message",
     "description": "the aria label to label the message box as an info message box"
   },
   "ariaMessageInfo": {
-    "message": "Info",
+    "message": "info message",
     "description": "the aria label to label the message box as an info message box"
   },
   "ariaMessageSuccess": {
-    "message": "Erfolg",
+    "message": "success message",
     "description": "the aria label to label the message box as an success message box"
   },
   "ariaMessageError": {
-    "message": "Fehlermeldung",
+    "message": "error message",
     "description": "the aria label to label the message box as an error message box"
   },
   "ariaMessageWarning": {
-    "message": "Warnung",
+    "message": "warning message",
     "description": "the aria label to label the message box as an warning message box"
   }
 }
