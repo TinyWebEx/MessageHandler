@@ -22,31 +22,31 @@ This module requires a specific HTML markup to be included in the HTML file, whe
 In the end, here is a copy template on how it should look, [taken from the unit tests](./tests/messageHandler/baseCode.html):
 ```html
 <div class="message-container">
-	<div id="messageLoading" aria-label="loading message" class="message-box info invisible fade-hide">
+	<div id="messageLoading" aria-label="loading message" data-i18n-aria-label="__MSG_ariaMessageLoading__" class="message-box info invisible fade-hide">
 		<span class="message-text">wait wait wait</span>
 	</div>
-	<div id="messageInfo" aria-label="info message" class="message-box info invisible fade-hide">
+	<div id="messageInfo" aria-label="info message" data-i18n-aria-label="__MSG_ariaMessageInfo__" class="message-box info invisible fade-hide">
 		<span class="message-text">FYI</span>
 		<a href="#">
 			<button class="message-action-button micro-button info invisible"></button>
 		</a>
 		<img class="icon-dismiss invisible" src="/common/img/close.svg" width="24" height="24" tabindex="0" data-i18n data-i18n-aria-label="__MSG_dismissIconDescription__"></span>
 	</div>
-	<div id="messageSuccess" aria-label="success message" class="message-box success invisible fade-hide">
+	<div id="messageSuccess" aria-label="success message" data-i18n-aria-label="__MSG_ariaMessageSuccess__" class="message-box success invisible fade-hide">
 		<span class="message-text">That worked!</span>
 		<a href="#">
 			<button class="message-action-button micro-button success invisible"></button>
 		</a>
 		<img class="icon-dismiss invisible" src="/common/img/close.svg" width="24" height="24" tabindex="0" data-i18n data-i18n-aria-label="__MSG_dismissIconDescription__"></span>
 	</div>
-	<div id="messageError" aria-label="error message" class="message-box error invisible fade-hide">
+	<div id="messageError" aria-label="error message" data-i18n-aria-label="__MSG_ariaMessageError__" class="message-box error invisible fade-hide">
 		<span class="message-text">An error happened.</span>
 		<a href="#">
 			<button class="message-action-button micro-button error invisible"></button>
 		</a>
 		<img class="icon-dismiss invisible" src="/common/img/close.svg" width="24" height="24" tabindex="0" data-i18n data-i18n-aria-label="__MSG_dismissIconDescription__"></span>
 	</div>
-	<div id="messageWarning" aria-label="warning message" class="message-box warning invisible fade-hide">
+	<div id="messageWarning" aria-label="warning message" data-i18n-aria-label="__MSG_ariaMessageWarning__" class="message-box warning invisible fade-hide">
 		<span class="message-text">There were some difficulties.</span>
 		<a href="#">
 			<button class="message-action-button micro-button warning invisible"></button>
@@ -123,3 +123,7 @@ You can set different hooks (callbacks) that are executed when a message is show
 For this, the function `setHook`, respectively `setGlobalHook` allow you to register callbacks for one message type or all message types.
 
 **Important:** Only one hook can be registered at a time. (Also for global hooks!) Thus, if you want to unset a hook, you can just "register" a new one with the value `null`.
+
+## i18n/l10n
+
+This module does require some specific localisations. Example localisation files for these are included in the [examples dir](`examples/_locales`).
