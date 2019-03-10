@@ -15,7 +15,7 @@ export {hideMessage, showMessage} from "./CustomMessages.js";
 /**
  * Hides the error message.
  *
- * public
+ * @public
  * @param  {Object} [options]
  * @param  {boolean} [options.animate=false] set to true to animate the hiding
  * @returns {void}
@@ -28,7 +28,7 @@ export function hideError(...args) {
 /**
  * Hide warning message.
  *
- * public
+ * @public
  * @param  {Object} [options]
  * @param  {boolean} [options.animate=false] set to true to animate the hiding
  * @returns {void}
@@ -41,7 +41,7 @@ export function hideWarning(...args) {
 /**
  * Hide info message.
  *
- * public
+ * @public
  * @param  {Object} [options]
  * @param  {boolean} [options.animate=false] set to true to animate the hiding
  * @returns {void}
@@ -54,7 +54,7 @@ export function hideInfo(...args) {
 /**
  * Hide loading message.
  *
- * public
+ * @public
  * @param  {Object} [options]
  * @param  {boolean} [options.animate=false] set to true to animate the hiding
  * @returns {void}
@@ -67,7 +67,7 @@ export function hideLoading(...args) {
 /**
  * Hide success message.
  *
- * public
+ * @public
  * @param  {Object} [options]
  * @param  {boolean} [options.animate=false] set to true to animate the hiding
  * @returns {void}
@@ -86,7 +86,7 @@ export function hideSuccess(...args) {
  * Also pay attention to the fact, that it currently can only show one error
  * once.
  *
- * public
+ * @public
  * @param {string} [message] optional, string to show or to translate if omitted no new text is shown
  * @param {boolean} [isDismissable] optional, set to true, if user should be able to dismiss the message
  * @param {Object} [actionButton] optional to show an action button
@@ -103,7 +103,7 @@ export function showError(...args) {
 /**
  * Show an warning message.
  *
- * public
+ * @public
  * @param {string} [message] optional, string to show or to translate if omitted no new text is shown
  * @param {boolean} [isDismissable] optional, set to true, if user should be able to dismiss the message
  * @param {Object} [actionButton] optional to show an action button
@@ -120,7 +120,7 @@ export function showWarning(...args) {
 /**
  * Show an info message.
  *
- * public
+ * @public
  * @param {string} [message] optional, string to show or to translate if omitted no new text is shown
  * @param {boolean} [isDismissable] optional, set to true, if user should be able to dismiss the message
  * @param {Object} [actionButton] optional to show an action button
@@ -137,7 +137,7 @@ export function showInfo(...args) {
 /**
  * Shows a loading message.
  *
- * public
+ * @public
  * @param {string} [message] optional, string to show or to translate if omitted no new text is shown
  * @param {boolean} [isDismissable] optional, set to true, if user should be able to dismiss the message
  * @param {Object} [actionButton] optional to show an action button
@@ -154,7 +154,7 @@ export function showLoading(...args) {
 /**
  * Show a success message.
  *
- * public
+ * @public
  * @param {string} [message] optional, string to show or to translate if omitted no new text is shown
  * @param {boolean} [isDismissable] optional, set to true, if user should be able to dismiss the message
  * @param {Object} [actionButton] optional to show an action button
@@ -287,7 +287,7 @@ export function setSuccessHook(hookShown = null, hookHidden = null) {
  * - {HTMLElement} elMessage – the message element, which was hidden
  * - {event} event – the original click even on the dismiss button
  *
- * public
+ * @public
  * @param {function|null} [startHook]
  * @param {function|null} [endHook]
  * @returns {void}
@@ -319,7 +319,7 @@ function registerMessageTypeIfExists(messageType, elMessage, designClass, ariaLa
 /**
  * Initialises the module.
  *
- * public
+ * @public
  * @returns {void}
  */
 export function init() {
