@@ -26,7 +26,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/TinyWebEx/" >All TinyWebExt modules</a></h2><h3>Modules</h3><ul><li><a href="module-CommonMessages.html">CommonMessages</a><ul class='methods'><li data-type='method'><a href="module-CommonMessages.html#.setErrorHook">setErrorHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.setInfoHook">setInfoHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.setLoadingHook">setLoadingHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.setSuccessHook">setSuccessHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.setWarningHook">setWarningHook</a></li></ul></li><li><a href="module-CustomMessages.html">CustomMessages</a><ul class='methods'><li data-type='method'><a href="module-CustomMessages.html#.getHtmlElement">getHtmlElement</a></li><li data-type='method'><a href="module-CustomMessages.html#.setGlobalHook">setGlobalHook</a></li><li data-type='method'><a href="module-CustomMessages.html#.setHook">setHook</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/TinyWebEx/" >All TinyWebExt modules</a></h2><h3>Modules</h3><ul><li><a href="module-CommonMessages.html">CommonMessages</a><ul class='methods'><li data-type='method'><a href="module-CommonMessages.html#.hideError">hideError</a></li><li data-type='method'><a href="module-CommonMessages.html#.hideInfo">hideInfo</a></li><li data-type='method'><a href="module-CommonMessages.html#.hideLoading">hideLoading</a></li><li data-type='method'><a href="module-CommonMessages.html#.hideSuccess">hideSuccess</a></li><li data-type='method'><a href="module-CommonMessages.html#.hideWarning">hideWarning</a></li><li data-type='method'><a href="module-CommonMessages.html#.init">init</a></li><li data-type='method'><a href="module-CommonMessages.html#.setDismissHooks">setDismissHooks</a></li><li data-type='method'><a href="module-CommonMessages.html#.setErrorHook">setErrorHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.setInfoHook">setInfoHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.setLoadingHook">setLoadingHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.setSuccessHook">setSuccessHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.setWarningHook">setWarningHook</a></li><li data-type='method'><a href="module-CommonMessages.html#.showError">showError</a></li><li data-type='method'><a href="module-CommonMessages.html#.showInfo">showInfo</a></li><li data-type='method'><a href="module-CommonMessages.html#.showLoading">showLoading</a></li><li data-type='method'><a href="module-CommonMessages.html#.showSuccess">showSuccess</a></li><li data-type='method'><a href="module-CommonMessages.html#.showWarning">showWarning</a></li></ul></li><li><a href="module-CustomMessages.html">CustomMessages</a><ul class='methods'><li data-type='method'><a href="module-CustomMessages.html#.getHtmlElement">getHtmlElement</a></li><li data-type='method'><a href="module-CustomMessages.html#.setGlobalHook">setGlobalHook</a></li><li data-type='method'><a href="module-CustomMessages.html#.setHook">setHook</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -60,31 +60,31 @@
 </ul>
 <p>In the end, here is a copy template on how it should look, <a href="./tests/messageHandler/baseCode.html">taken from the unit tests</a>:</p>
 <pre class="prettyprint source lang-html"><code>&lt;div class=&quot;message-container&quot;>
-    &lt;div id=&quot;messageLoading&quot; aria-label=&quot;loading message&quot; class=&quot;message-box info invisible fade-hide&quot;>
+    &lt;div id=&quot;messageLoading&quot; aria-label=&quot;loading message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageLoading__&quot; class=&quot;message-box info invisible fade-hide&quot;>
         &lt;span class=&quot;message-text&quot;>wait wait wait&lt;/span>
     &lt;/div>
-    &lt;div id=&quot;messageInfo&quot; aria-label=&quot;info message&quot; class=&quot;message-box info invisible fade-hide&quot;>
+    &lt;div id=&quot;messageInfo&quot; aria-label=&quot;info message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageInfo__&quot; class=&quot;message-box info invisible fade-hide&quot;>
         &lt;span class=&quot;message-text&quot;>FYI&lt;/span>
         &lt;a href=&quot;#&quot;>
             &lt;button class=&quot;message-action-button micro-button info invisible&quot;>&lt;/button>
         &lt;/a>
         &lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
     &lt;/div>
-    &lt;div id=&quot;messageSuccess&quot; aria-label=&quot;success message&quot; class=&quot;message-box success invisible fade-hide&quot;>
+    &lt;div id=&quot;messageSuccess&quot; aria-label=&quot;success message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageSuccess__&quot; class=&quot;message-box success invisible fade-hide&quot;>
         &lt;span class=&quot;message-text&quot;>That worked!&lt;/span>
         &lt;a href=&quot;#&quot;>
             &lt;button class=&quot;message-action-button micro-button success invisible&quot;>&lt;/button>
         &lt;/a>
         &lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
     &lt;/div>
-    &lt;div id=&quot;messageError&quot; aria-label=&quot;error message&quot; class=&quot;message-box error invisible fade-hide&quot;>
+    &lt;div id=&quot;messageError&quot; aria-label=&quot;error message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageError__&quot; class=&quot;message-box error invisible fade-hide&quot;>
         &lt;span class=&quot;message-text&quot;>An error happened.&lt;/span>
         &lt;a href=&quot;#&quot;>
             &lt;button class=&quot;message-action-button micro-button error invisible&quot;>&lt;/button>
         &lt;/a>
         &lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
     &lt;/div>
-    &lt;div id=&quot;messageWarning&quot; aria-label=&quot;warning message&quot; class=&quot;message-box warning invisible fade-hide&quot;>
+    &lt;div id=&quot;messageWarning&quot; aria-label=&quot;warning message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageWarning__&quot; class=&quot;message-box warning invisible fade-hide&quot;>
         &lt;span class=&quot;message-text&quot;>There were some difficulties.&lt;/span>
         &lt;a href=&quot;#&quot;>
             &lt;button class=&quot;message-action-button micro-button warning invisible&quot;>&lt;/button>
@@ -133,7 +133,9 @@ Note that if the whole message type DIV is not there, this will lead to errors.<
 <p>You can set different hooks (callbacks) that are executed when a message is shown, hidden or dismissed.</p>
 <p><strong>Important:</strong> When a message is dismissed, it is also always hidden afterwards, i.e. both events are triggered.</p>
 <p>For this, the function <code>setHook</code>, respectively <code>setGlobalHook</code> allow you to register callbacks for one message type or all message types.</p>
-<p><strong>Important:</strong> Only one hook can be registered at a time. (Also for global hooks!) Thus, if you want to unset a hook, you can just &quot;register&quot; a new one with the value <code>null</code>.</p></article>
+<p><strong>Important:</strong> Only one hook can be registered at a time. (Also for global hooks!) Thus, if you want to unset a hook, you can just &quot;register&quot; a new one with the value <code>null</code>.</p>
+<h2 id="i18n-l10n">i18n/l10n</h2>
+<p>This module does require some specific localisations. Example localisation files for these are included in the <a href="`examples/_locales`">examples dir</a>.</p></article>
     </section>
 
 
@@ -148,7 +150,7 @@ Note that if the whole message type DIV is not there, this will lead to errors.<
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Jan 20 2019 22:26:43 GMT+0100 (Mitteleuropäische Normalzeit) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Mar 10 2019 10:59:37 GMT+0100 (Mitteleuropäische Normalzeit) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
