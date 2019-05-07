@@ -76,7 +76,7 @@ describe("common module: MessageHandler", function () {
      *
      * @private
      * @function
-     * @param {string} boxId the ID of tghe HtmlElement of the message box
+     * @param {string} boxId the ID of tghe HTMLElement of the message box
      * @param {string} boxName the name of the tested message box
      * @param {function} functionCall the function under test
      * @returns {Promise}
@@ -169,7 +169,7 @@ describe("common module: MessageHandler", function () {
      *
      * @private
      * @function
-     * @param {string} boxId the ID of the HtmlElement of the message box
+     * @param {string} boxId the ID of the HTMLElement of the message box
      * @param {string} boxName the name of the tested message box
      * @param {function} functionCall the function under test
      * @returns {Promise}
@@ -255,7 +255,7 @@ describe("common module: MessageHandler", function () {
          *
          * @private
          * @function
-         * @param {string} boxId the ID of the HtmlElement of the message box
+         * @param {string} boxId the ID of the HTMLElement of the message box
          * @param {MESSAGE_LEVEL} messageLevel the message level design to add
          * @param {string} oldClass the old class of the message
          * @param {string} newClass the fnew class of the message
@@ -297,7 +297,7 @@ describe("common module: MessageHandler", function () {
          *
          * @private
          * @function
-         * @param {string} boxId the ID of the HtmlElement of the message box
+         * @param {string} boxId the ID of the HTMLElement of the message box
          * @param {MESSAGE_LEVEL} messageLevel the message level design to add
          * @param {string} oldAria the old aria-type of the message
          * @param {string} newAria the new aria-type of the message

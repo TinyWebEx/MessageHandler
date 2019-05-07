@@ -613,7 +613,7 @@ function verifyHook(hookType, hookFunction) {
  * Pass "null" to it to unset it.
  *
  * @public
- * @param  {MESSAGE_LEVEL|HtmlElement} messageType
+ * @param  {MESSAGE_LEVEL|HTMLElement} messageType
  * @param {string} hookType
  * @param {function|null} hookFunction the callback to run
  * @returns {void}
