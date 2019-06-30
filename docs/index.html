@@ -13,6 +13,7 @@
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -39,6 +40,7 @@
     
 
 
+
     <section class="readme">
         <article><h1 id="tinywebext-messagehandler">TinyWebExt MessageHandler</h1>
 <p>A handler for showing customizable, hidable notification messages in your add-on.</p>
@@ -60,44 +62,50 @@
 </ul>
 <p>In the end, here is a copy template on how it should look, <a href="./tests/messageHandler/baseCode.html">taken from the unit tests</a>:</p>
 <pre class="prettyprint source lang-html"><code>&lt;div class=&quot;message-container&quot;>
-    &lt;div id=&quot;messageLoading&quot; aria-label=&quot;loading message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageLoading__&quot; class=&quot;message-box info invisible fade-hide&quot;>
-        &lt;span class=&quot;message-text&quot;>wait wait wait&lt;/span>
-    &lt;/div>
-    &lt;div id=&quot;messageInfo&quot; aria-label=&quot;info message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageInfo__&quot; class=&quot;message-box info invisible fade-hide&quot;>
-        &lt;span class=&quot;message-text&quot;>FYI&lt;/span>
-        &lt;a href=&quot;#&quot;>
-            &lt;button class=&quot;message-action-button micro-button info invisible&quot;>&lt;/button>
-        &lt;/a>
-        &lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
-    &lt;/div>
-    &lt;div id=&quot;messageSuccess&quot; aria-label=&quot;success message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageSuccess__&quot; class=&quot;message-box success invisible fade-hide&quot;>
-        &lt;span class=&quot;message-text&quot;>That worked!&lt;/span>
-        &lt;a href=&quot;#&quot;>
-            &lt;button class=&quot;message-action-button micro-button success invisible&quot;>&lt;/button>
-        &lt;/a>
-        &lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
-    &lt;/div>
-    &lt;div id=&quot;messageError&quot; aria-label=&quot;error message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageError__&quot; class=&quot;message-box error invisible fade-hide&quot;>
-        &lt;span class=&quot;message-text&quot;>An error happened.&lt;/span>
-        &lt;a href=&quot;#&quot;>
-            &lt;button class=&quot;message-action-button micro-button error invisible&quot;>&lt;/button>
-        &lt;/a>
-        &lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
-    &lt;/div>
-    &lt;div id=&quot;messageWarning&quot; aria-label=&quot;warning message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageWarning__&quot; class=&quot;message-box warning invisible fade-hide&quot;>
-        &lt;span class=&quot;message-text&quot;>There were some difficulties.&lt;/span>
-        &lt;a href=&quot;#&quot;>
-            &lt;button class=&quot;message-action-button micro-button warning invisible&quot;>&lt;/button>
-        &lt;/a>
-        &lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
-    &lt;/div>
-&lt;/div></code></pre><p>If one of the (optional) elements, such as a dismiss icon or action button is not present in the HTML code, and someone tries to use it via JS, this will just be ignored, i.e. the HTML has precendence over JS and limits whether it is even possible to show a button/dismiss icon/...
+	&lt;div id=&quot;messageLoading&quot; aria-label=&quot;loading message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageLoading__&quot; class=&quot;message-box info invisible fade-hide&quot;>
+		&lt;span class=&quot;message-text&quot;>wait wait wait&lt;/span>
+	&lt;/div>
+	&lt;div id=&quot;messageInfo&quot; aria-label=&quot;info message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageInfo__&quot; class=&quot;message-box info invisible fade-hide&quot;>
+		&lt;span class=&quot;message-text&quot;>FYI&lt;/span>
+		&lt;a href=&quot;#&quot;>
+			&lt;button class=&quot;message-action-button micro-button info invisible&quot;>&lt;/button>
+		&lt;/a>
+		&lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
+	&lt;/div>
+	&lt;div id=&quot;messageSuccess&quot; aria-label=&quot;success message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageSuccess__&quot; class=&quot;message-box success invisible fade-hide&quot;>
+		&lt;span class=&quot;message-text&quot;>That worked!&lt;/span>
+		&lt;a href=&quot;#&quot;>
+			&lt;button class=&quot;message-action-button micro-button success invisible&quot;>&lt;/button>
+		&lt;/a>
+		&lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
+	&lt;/div>
+	&lt;div id=&quot;messageError&quot; aria-label=&quot;error message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageError__&quot; class=&quot;message-box error invisible fade-hide&quot;>
+		&lt;span class=&quot;message-text&quot;>An error happened.&lt;/span>
+		&lt;a href=&quot;#&quot;>
+			&lt;button class=&quot;message-action-button micro-button error invisible&quot;>&lt;/button>
+		&lt;/a>
+		&lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
+	&lt;/div>
+	&lt;div id=&quot;messageWarning&quot; aria-label=&quot;warning message&quot; data-i18n data-i18n-aria-label=&quot;__MSG_ariaMessageWarning__&quot; class=&quot;message-box warning invisible fade-hide&quot;>
+		&lt;span class=&quot;message-text&quot;>There were some difficulties.&lt;/span>
+		&lt;a href=&quot;#&quot;>
+			&lt;button class=&quot;message-action-button micro-button warning invisible&quot;>&lt;/button>
+		&lt;/a>
+		&lt;img class=&quot;icon-dismiss invisible&quot; src=&quot;/common/img/close.svg&quot; width=&quot;24&quot; height=&quot;24&quot; tabindex=&quot;0&quot; data-i18n data-i18n-aria-label=&quot;__MSG_dismissIconDescription__&quot;>&lt;/span>
+	&lt;/div>
+&lt;/div>
+</code></pre>
+<p>If one of the (optional) elements, such as a dismiss icon or action button is not present in the HTML code, and someone tries to use it via JS, this will just be ignored, i.e. the HTML has precendence over JS and limits whether it is even possible to show a button/dismiss icon/...
 Note that if the whole message type DIV is not there, this will lead to errors.</p>
 <h2 id="showing-messages">Showing messages</h2>
 <h3 id="common-messages">Common Messages</h3>
 <p>If you want do show error or other messages, you can then just call:</p>
-<pre class="prettyprint source lang-js"><code>CommonMessages.showError(&quot;errorMessage&quot;);</code></pre><p>Respectively hide them with:</p>
-<pre class="prettyprint source lang-js"><code>CommonMessages.hideError();</code></pre><p>There are function available for each message type.</p>
+<pre class="prettyprint source lang-js"><code>CommonMessages.showError(&quot;errorMessage&quot;);
+</code></pre>
+<p>Respectively hide them with:</p>
+<pre class="prettyprint source lang-js"><code>CommonMessages.hideError();
+</code></pre>
+<p>There are function available for each message type.</p>
 <h3 id="custom-messages">Custom Messages</h3>
 <p>The <a href="CustomMessages.js"><code>CustomMessages.js</code></a> module is also used by the <code>CommonMessages.js</code> as it's core, i.e. it's also a good rreference to see how the <code>CustomMessages.js</code> file is used.</p>
 <p>Basicaly, this is the workflow you have to follow:</p>
@@ -128,14 +136,16 @@ Note that if the whole message type DIV is not there, this will lead to errors.<
             CommonMessages.hideSuccess();
         });
     }
-})</code></pre><p>(This is actually <a href="https://github.com/TinyWebEx/AutomaticSettings">used in TinyWebEx AutomaticSettings</a>.)</p>
+})
+</code></pre>
+<p>(This is actually <a href="https://github.com/TinyWebEx/AutomaticSettings">used in TinyWebEx AutomaticSettings</a>.)</p>
 <h3 id="hooks">Hooks</h3>
 <p>You can set different hooks (callbacks) that are executed when a message is shown, hidden or dismissed.</p>
 <p><strong>Important:</strong> When a message is dismissed, it is also always hidden afterwards, i.e. both events are triggered.</p>
 <p>For this, the function <code>setHook</code>, respectively <code>setGlobalHook</code> allow you to register callbacks for one message type or all message types.</p>
 <p><strong>Important:</strong> Only one hook can be registered at a time. (Also for global hooks!) Thus, if you want to unset a hook, you can just &quot;register&quot; a new one with the value <code>null</code>.</p>
-<h2 id="i18n-l10n">i18n/l10n</h2>
-<p>This module does require some specific localisations. Example localisation files for these are included in the <a href="`examples/_locales`">examples dir</a>.</p></article>
+<h2 id="i18n%2Fl10n">i18n/l10n</h2>
+<p>This module does require some specific localisations. Example localisation files for these are included in the <a href="%60examples/_locales%60">examples dir</a>.</p></article>
     </section>
 
 
@@ -150,11 +160,13 @@ Note that if the whole message type DIV is not there, this will lead to errors.<
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Mar 10 2019 10:59:37 GMT+0100 (Mitteleuropäische Normalzeit) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Sun Jun 30 2019 23:07:10 GMT+0200 (GMT+02:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
 <script src="scripts/linenumber.js"></script>
+
 
 
 </body>
