@@ -178,7 +178,7 @@ export function showSuccess(...args) {
  * function, as an array.
  *
  * @private
- * @param {MESSAGE_LEVEL|HtmlElement} messageType use string "global" for a global hook
+ * @param {MESSAGE_LEVEL|HTMLElement} messageType use string "global" for a global hook
  * @param {function|null} [hookShown]
  * @param {function|null} [hookHidden]
  * @returns {void}
