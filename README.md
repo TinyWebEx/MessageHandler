@@ -16,7 +16,7 @@ This module requires a specific HTML markup to be included in the HTML file, whe
 * All messages must be included in the HTML element with the class `message-container`.
 * Inside of that, there must be message (DIVs) with the class `message-box`.
 * The subelement `message-text` contains the text of the message, `message-action-button` marks an optional action button and `icon-dismiss` shows an optional icon to dismiss a warning.
-* The individual different message types need a specific unique ID, i.e. `messageLoading`, `messageInfo`, `messageSuccess`, `messageWarning` and `messageError` if you want to use the [common messages](#common-messages). These IDs are hardcoded in the init function of `CommonMessages.js`.
+* The individual different message types need a specific unique ID, i.e. `messageLoading`, `messageInfo`, `messageSuccess`, `messageWarning` and `messageError` if you want to use the [common messages](#common-messages). These IDs are [hardcoded in the init function of `CommonMessages.js`](https://github.com/TinyWebEx/MessageHandler/blob/36d486a3201994d5f1d53ef9b148606a053fc42f/CommonMessages.js#L326-L330).
 * You should also have aria labels and other elements set.
 
 In the end, here is a copy template on how it should look, [taken from the unit tests](./tests/messageHandler/baseCode.html):
