@@ -59,6 +59,8 @@ In the end, here is a copy template on how it should look, [taken from the unit 
 If one of the (optional) elements, such as a dismiss icon or action button is not present in the HTML code, and someone tries to use it via JS, this will just be ignored, i.e. the HTML has precendence over JS and limits whether it is even possible to show a button/dismiss icon/...
 Note that if the whole message type DIV is not there, this will lead to errors.
 
+The prosposed CSS classes/design is implemented [in the CommonCss module](https://github.com/TinyWebEx/CommonCss), though you could of course provide an alternative CSS style/classes if you want.
+
 ## Showing messages
 
 ### Common Messages
