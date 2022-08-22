@@ -128,4 +128,4 @@ For this, the function `setHook`, respectively `setGlobalHook` allow you to regi
 
 ## i18n/l10n
 
-This module does require some specific localisations. Example localisation files for these are included in the [examples dir](`examples/_locales`).
+This module does require some specific localisations. Example localisation files for these are included in the [examples dir](examples/_locales).
